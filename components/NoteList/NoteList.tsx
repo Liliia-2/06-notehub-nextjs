@@ -4,6 +4,7 @@ import css from './NoteList.module.css';
 
 import type { Note } from '../../types/note';
 import { deleteNote } from '../../services/noteService';
+import Link from "next/link";
 
 interface NoteListProps {
   notes: Note[];
@@ -28,7 +29,9 @@ export default function NoteList({
     <ul className={css.list}>
       {notes.map(note => (
         <li key={note.id} className={css.listItem}>
-          <h2 className={css.title}>{note.title}</h2>
+          <Link href={`/note/${note.id}`}>
+            <h2 className={css.title}>{note.title}</h2>
+            </Link>
 
           <p className={css.content}>{note.content}</p>
 
